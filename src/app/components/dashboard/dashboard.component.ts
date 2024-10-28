@@ -5,6 +5,7 @@ import { BalanceCardComponent } from '../balance-card/balance-card.component';
 import { QuickActionsComponent } from '../quick-actions/quick-actions.component';
 import { RecentTransactionsComponent } from '../recent-transactions/recent-transactions.component';
 import { FooterComponent } from '../footer/footer.component';
+import { QrCodeComponent } from '../qr-code/qr-code.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -12,7 +13,8 @@ import { FooterComponent } from '../footer/footer.component';
   imports: [
     CommonModule,
     HeaderComponent,
-    BalanceCardComponent,
+    // BalanceCardComponent,
+    QrCodeComponent,
     QuickActionsComponent,
     RecentTransactionsComponent,
     FooterComponent

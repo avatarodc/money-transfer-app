@@ -8,4 +8,5 @@ export interface Wallet {
   dailyLimit?: number;
   monthlyLimit?: number;
   plafond?: number;
+  updatedAt: Date;
 }
