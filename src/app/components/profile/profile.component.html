@@ -1,0 +1,9 @@
+<p>profile works!</p>
+
+<div class="profile-container">
+  <img src="path/to/profile-image.jpg" alt="Profile" (click)="toggleDropdown()" class="profile-pic">
+  <div *ngIf="dropdownOpen" class="dropdown-menu">
+    <button (click)="logout()">Se déconnecter</button>
+  </div>
+</div>
+

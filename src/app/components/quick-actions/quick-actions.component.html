@@ -1,0 +1,8 @@
+<div class="grid grid-cols-4 gap-6 p-6 bg-gray-100 rounded-lg shadow-inner">
+  <ng-container *ngFor="let action of actions; trackBy: trackByLabel">
+    <button mat-button class="flex flex-col items-center p-4 bg-white rounded-lg shadow hover:bg-gray-100 transition duration-300">
+      <mat-icon class="text-blue-600 mb-2 text-2xl">{{action.icon}}</mat-icon>
+      <span class="text-sm font-medium text-gray-700">{{action.label}}</span>
+    </button>
+  </ng-container>
+</div>
