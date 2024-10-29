@@ -1,25 +1,27 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-profile',
-  standalone: true,
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.css'],
-  imports: [CommonModule]
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent {
-  dropdownOpen = false;
+  profileImage: string | null = null;
+  userName: string | null = null;
+  userEmail: string | null = null;
+  dropdownOpen: boolean = false;
 
-  constructor(private router: Router) {}
-
-  toggleDropdown() {
+  toggleDropdown(): void {
     this.dropdownOpen = !this.dropdownOpen;
   }
 
-  logout() {
-    // Logique de déconnexion, par exemple, supprimer le token d'authentification
-    this.router.navigate(['/login']); // Redirige vers la page de connexion
+  help(): void {
+    // Implémentez votre logique d'aide ici
+    console.log('Aide demandée');
+  }
+
+  logout(): void {
+    // Implémentez votre logique de déconnexion ici
+    console.log('Déconnexion');
   }
 }

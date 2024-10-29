@@ -18,23 +18,23 @@
   </div>
 
   <div *ngIf="dropdownOpen" class="dropdown-menu">
-    <div class="menu-item" (click)="editProfile()">
+    <a routerLink="/profile/edit" class="menu-item">
       <i class="fas fa-user-edit"></i>
       <span>Modifier le profil</span>
-    </div>
-    <div class="menu-item" (click)="settings()">
+    </a>
+    <a routerLink="/settings" class="menu-item">
       <i class="fas fa-cog"></i>
       <span>Paramètres</span>
-    </div>
-    <div class="menu-item" (click)="help()">
+    </a>
+    <a routerLink="/help" class="menu-item">
       <i class="fas fa-question-circle"></i>
       <span>Aide</span>
-    </div>
+    </a>
     <hr>
-    <div class="menu-item logout" (click)="logout()">
+    <a routerLink="/logout" class="menu-item logout">
       <i class="fas fa-sign-out-alt"></i>
       <span>Se déconnecter</span>
-    </div>
+    </a>
   </div>
 </div>
 
