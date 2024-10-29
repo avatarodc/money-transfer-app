@@ -1,6 +1,6 @@
 <!-- footer.component.html -->
 <footer class="fixed bottom-4 left-0 right-0">
-  <div class="relative max-w-lg mx-auto rounded-2xl overflow-hidden">
+  <div *ngIf="apiService.isClient()" class="relative max-w-lg mx-auto rounded-2xl overflow-hidden">
     <!-- Effets de particules -->
     <div class="absolute inset-0 bg-gradient-to-r from-violet-600 via-blue-600 to-indigo-700">
       <div class="absolute inset-0">
@@ -68,6 +68,65 @@
       </ul>
     </nav>
   </div>
+  <div *ngIf="apiService.isAdmin()">
+    <nav class="fixed bottom-4 left-1/2 transform -translate-x-1/2 w-11/12 max-w-lg bg-gray-800 text-white py-2 px-4 rounded-full shadow-lg">
+      <ul class="flex justify-around items-center">
+        <li class="flex-1 text-center">
+          <a routerLink="/admin/dashboard"
+             routerLinkActive="text-white scale-110"
+             class="flex flex-col items-center text-white/90 hover:text-white p-2 transition-all duration-300 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="7" height="7"/>
+              <rect x="14" y="3" width="7" height="7"/>
+              <rect x="14" y="14" width="7" height="7"/>
+              <rect x="3" y="14" width="7" height="7"/>
+            </svg>
+            <span class="text-xs mt-1">Dashboard</span>
+          </a>
+        </li>
+
+        <li class="flex-1 text-center">
+          <a routerLink="/admin/users"
+             routerLinkActive="text-white scale-110"
+             class="flex flex-col items-center text-white/90 hover:text-white rounded-lg p-2 transition-all duration-300 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+            <span class="text-xs mt-1">Utilisateurs</span>
+          </a>
+        </li>
+
+        <li class="flex-1 text-center">
+          <a routerLink="/admin/transactions"
+             routerLinkActive="text-white scale-110"
+             class="flex flex-col items-center text-white/90 hover:text-white rounded-lg p-2 transition-all duration-300 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="1" x2="12" y2="23"/>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+            </svg>
+            <span class="text-xs mt-1">Transactions</span>
+          </a>
+        </li>
+
+        <li class="flex-1 text-center">
+          <a routerLink="/admin/settings"
+             routerLinkActive="text-white scale-110"
+             class="flex flex-col items-center text-white/90 hover:text-white rounded-lg p-2 transition-all duration-300 hover:scale-110">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+            </svg>
+            <span class="text-xs mt-1">Paramètres</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+
+
 </footer>
 
 <style>

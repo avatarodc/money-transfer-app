@@ -5,7 +5,9 @@ import { BalanceCardComponent } from '../balance-card/balance-card.component';
 import { QuickActionsComponent } from '../quick-actions/quick-actions.component';
 import { RecentTransactionsComponent } from '../recent-transactions/recent-transactions.component';
 import { FooterComponent } from '../footer/footer.component';
+import { DashboardAdminComponent } from '../../admin/dashboard-admin/dashboard-admin.component';
 import { QrCodeComponent } from '../qr-code/qr-code.component';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,6 +17,7 @@ import { QrCodeComponent } from '../qr-code/qr-code.component';
     HeaderComponent,
     // BalanceCardComponent,
     QrCodeComponent,
+    DashboardAdminComponent,
     QuickActionsComponent,
     RecentTransactionsComponent,
     FooterComponent
@@ -22,4 +25,9 @@ import { QrCodeComponent } from '../qr-code/qr-code.component';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent {}
+export class DashboardComponent {
+  totalUsers: number = 0;
+  todayTransactions: number = 0;
+
+  constructor(public apiService: ApiService) {}
+}

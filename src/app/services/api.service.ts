@@ -1,10 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { tap, catchError } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 import { ApiResponse } from '../models/api-response.interface';
 import { HttpOptions } from '../models/http-options.interface';
+import { UserRole } from '../models/user-role.enum';
+import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Injectable({
   providedIn: 'root'
@@ -19,7 +21,25 @@ export class ApiService {
     withCredentials: true
   };
 
-  constructor(protected http: HttpClient) {}
+  private jwtHelper = new JwtHelperService();
+  private currentUserRole: UserRole = UserRole.USER;
+
+  constructor(protected http: HttpClient) {
+    this.initializeUserRole();
+  }
+
+  private initializeUserRole(): void {
+    const token = localStorage.getItem('token'); // ou votre clé de stockage du token
+    if (token) {
+      try {
+        const decodedToken = this.jwtHelper.decodeToken(token);
+        this.currentUserRole = decodedToken.role; // Assurez-vous que 'role' correspond à la clé dans votre token
+      } catch (error) {
+        console.error('Erreur lors du décodage du token:', error);
+        this.currentUserRole = UserRole.USER; // Valeur par défaut
+      }
+    }
+  }
 
   public get<T>(endpoint: string, options?: HttpOptions): Observable<ApiResponse<T>> {
     const fullUrl = `${this.baseUrl}${endpoint}`;
@@ -88,4 +108,31 @@ export class ApiService {
     }
     return throwError(() => error);
   }
+
+  public getCurrentUserRole(): UserRole {
+    return this.currentUserRole;
+  }
+
+  public setCurrentUserRole(role: UserRole): void {
+    this.currentUserRole = role;
+  }
+
+  public isAdmin(): boolean {
+    const token = localStorage.getItem('token');
+    if (!token) return false;
+
+    try {
+      const decodedToken = this.jwtHelper.decodeToken(token);
+      console.log('Token décodé:', decodedToken); // Pour déboguer
+      return decodedToken.role === 'ADMIN';
+    } catch (error) {
+      console.error('Erreur de décodage du token:', error);
+      return false;
+    }
+  }
+
+  public isClient(): boolean {
+    console.log('currentUserRole', this.currentUserRole);
+    return this.currentUserRole === UserRole.USER;  // Déjà correct
+}
 }

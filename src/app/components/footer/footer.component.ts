@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-footer',
@@ -15,5 +16,6 @@ import { MatIconModule } from '@angular/material/icon';
   // styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  // Ajoutez ici la logique si nécessaire
+  constructor(public apiService: ApiService) {}
+
 }

@@ -18,6 +18,7 @@ export class QrCodeComponent implements OnInit {
   ngOnInit() {
     this.qrData = JSON.stringify({
       userId: this.userId,
+      appUrl: window.location.origin,
       timestamp: new Date().getTime()
     });
   }
