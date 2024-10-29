@@ -1,9 +1,40 @@
 <p>profile works!</p>
 
 <div class="profile-container">
-  <img src="path/to/profile-image.jpg" alt="Profile" (click)="toggleDropdown()" class="profile-pic">
+  <div class="profile-header">
+    <div class="profile-image-wrapper">
+      <img
+        [src]="profileImage || 'assets/images/default-avatar.png'"
+        alt="Photo de profil"
+        (click)="toggleDropdown()"
+        class="profile-pic">
+      <div class="profile-status online"></div>
+    </div>
+
+    <div class="profile-info">
+      <h2>{{ userName || 'Utilisateur' }}</h2>
+      <p class="email">{{ userEmail || 'email@exemple.com' }}</p>
+    </div>
+  </div>
+
   <div *ngIf="dropdownOpen" class="dropdown-menu">
-    <button (click)="logout()">Se déconnecter</button>
+    <div class="menu-item" (click)="editProfile()">
+      <i class="fas fa-user-edit"></i>
+      <span>Modifier le profil</span>
+    </div>
+    <div class="menu-item" (click)="settings()">
+      <i class="fas fa-cog"></i>
+      <span>Paramètres</span>
+    </div>
+    <div class="menu-item" (click)="help()">
+      <i class="fas fa-question-circle"></i>
+      <span>Aide</span>
+    </div>
+    <hr>
+    <div class="menu-item logout" (click)="logout()">
+      <i class="fas fa-sign-out-alt"></i>
+      <span>Se déconnecter</span>
+    </div>
   </div>
 </div>
 
