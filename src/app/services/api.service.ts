@@ -123,7 +123,7 @@ export class ApiService {
 
     try {
       const decodedToken = this.jwtHelper.decodeToken(token);
-      console.log('Token décodé:', decodedToken); // Pour déboguer
+      // console.log('Token décodé:', decodedToken); // Pour déboguer
       return decodedToken.role === 'ADMIN';
     } catch (error) {
       console.error('Erreur de décodage du token:', error);
@@ -132,7 +132,7 @@ export class ApiService {
   }
 
   public isClient(): boolean {
-    console.log('currentUserRole', this.currentUserRole);
+    // console.log('currentUserRole', this.currentUserRole);
     return this.currentUserRole === UserRole.USER;  // Déjà correct
 }
 }

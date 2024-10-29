@@ -26,7 +26,7 @@ export class UserService extends ApiService {
   // Récupérer l'utilisateur connecté
   getCurrentUser(): Observable<ApiResponse<User>> {
     const token = localStorage.getItem('token');
-    console.log('Token from localStorage:', token); // Debug
+    // console.log('Token from localStorage:', token); // Debug
 
     if (!token) {
       return throwError(() => new Error('No token found'));
@@ -34,9 +34,9 @@ export class UserService extends ApiService {
 
     try {
       const decodedToken = jwtDecode(token) as any;
-      console.log('Decoded token:', decodedToken); // Debug
+      // console.log('Decoded token:', decodedToken); // Debug
       const userId = decodedToken.userId;
-      console.log('User ID extracted:', userId); // Debug
+      // console.log('User ID extracted:', userId); // Debug
 
       // Utiliser l'ID spécifique de l'utilisateur
       return this.get<User>(`/users/${userId}`, {
