@@ -1,4 +1,5 @@
 export interface User {
+  role: Role;
   id: string;
   email: string;
   phoneNumber: string;
@@ -13,6 +14,10 @@ export interface User {
   isActive: boolean;
   kycStatus: 'PENDING' | 'VERIFIED' | 'REJECTED';
   profilePicture?: string; // optionnel, utilisera profileImage par défaut si non défini
+}
+export interface Role{
+  id: string;
+  name: UserRole;
 }
 
 export enum UserRole {

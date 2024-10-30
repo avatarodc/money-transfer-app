@@ -67,6 +67,19 @@ export class ApiService {
     );
   }
 
+  // Méthode PATCH ajoutée
+  protected patch<T>(endpoint: string, data: any, options?: HttpOptions): Observable<ApiResponse<T>> {
+    const fullUrl = `${this.baseUrl}${endpoint}`;
+    return this.http.patch<ApiResponse<T>>(
+      fullUrl,
+      data,
+      { ...this.defaultOptions, ...options }
+    ).pipe(
+      tap(response => this.logResponse('PATCH', fullUrl, response)),
+      catchError(error => this.handleError(error))
+    );
+  }
+
   private logResponse(method: string, url: string, response: any): void {
     if (!environment.production) {
       console.log(`[${method}] ${url}:`, response);

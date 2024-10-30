@@ -6,6 +6,7 @@ import { QuickActionsComponent } from '../quick-actions/quick-actions.component'
 import { RecentTransactionsComponent } from '../recent-transactions/recent-transactions.component';
 import { FooterComponent } from '../footer/footer.component';
 import { QrCodeComponent } from '../qr-code/qr-code.component';
+import {DemandeListComponent} from '../demande/demande-list.component';
 
 @Component({
   selector: 'app-dashboard',
@@ -17,7 +18,9 @@ import { QrCodeComponent } from '../qr-code/qr-code.component';
     QrCodeComponent,
     QuickActionsComponent,
     RecentTransactionsComponent,
+    DemandeListComponent,
     FooterComponent
+
   ],
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
